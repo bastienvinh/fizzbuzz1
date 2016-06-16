@@ -4,6 +4,11 @@ using System.Linq;
 
 namespace Portr
 {
+	// Author BV : Each function was created to be test alone (Unit test). So each methods do one things only.
+
+	/// <summary>
+	/// Fizz buzz. Class
+	/// </summary>
 	public class FizzBuzz
 	{
 		#region Attributes
@@ -18,6 +23,9 @@ namespace Portr
 
 
 		#region Constructors
+		/// <summary>
+		/// Constructor without parameter
+		/// </summary>
 		public FizzBuzz()
 		{
 			MessageHasLuckyNumber = "lucky";
@@ -30,6 +38,11 @@ namespace Portr
 		#endregion
 
 		#region Utils
+		/// <summary>
+		/// What message to for each case in response of a number
+		/// </summary>
+		/// <returns>The buzz number.</returns>
+		/// <param name="number">Number to evaluate.</param>
 		private string FizzBuzzNumber(int number)
 		{
 			string res = "";
@@ -53,6 +66,11 @@ namespace Portr
 
 
 		#region Public Methods
+		/// <summary>
+		/// Methods genrate the feezbuzz results
+		/// </summary>
+		/// <param name="start">Start.</param>
+		/// <param name="end">End.</param>
 		public string Generate(int start, int end)
 		{
 
@@ -82,8 +100,16 @@ namespace Portr
 
 		// For me each function can Test Simply;
 
+		/// <summary>
+		/// Generates the report.
+		/// </summary>
+		/// <returns>The report.</returns>
+		/// <param name="start">Start.</param>
+		/// <param name="end">End.</param>
 		public string GenerateReport(int start, int end)
 		{
+			// BV : ye I go pretty far
+
 			// We count the number of lucky
 			int numberLucky = (end / 10) - (start / 10);
 			if ((end % 10) >= LuckyNumber)
@@ -105,6 +131,7 @@ namespace Portr
 			int numberOfBuzz = (end / 5) - ((start - 1) / 5) - numberOf15 - list.Where(x => (x % 5) == 0).Count();
 
 			numberInteger -= (numberLucky + numberOfFizz + numberOfBuzz + numberOf15);
+			list = null; // Garbage to free memory, not really working.
 
 			return string.Format("{0}:{1} {2}:{3} {4}:{5} {6}:{7} integer:{8}", MessageNumber3, numberOfFizz, MessageNumber5, numberOfBuzz, MessageNumber3And5, numberOf15, MessageHasLuckyNumber, numberLucky, numberInteger);
 		}
